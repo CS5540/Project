@@ -1,3 +1,5 @@
+import java.io.FileWriter
+
 import com.google.gson.{GsonBuilder, JsonParser}
 import org.apache.spark.sql.SQLContext
 import org.apache.spark.{SparkConf, SparkContext}
@@ -8,6 +10,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object ExamineTweets {
   val jsonParser = new JsonParser()
   val gson = new GsonBuilder().setPrettyPrinting().create()
+  val fw = new FileWriter("output/hashtags.txt")
 
   def main(args: Array[String]) {
     val tweetInput = "data/tweets*/part*"
@@ -20,13 +23,20 @@ object ExamineTweets {
 
     val sc = new SparkContext(sparkConf)
 
-    // Pretty print some of the tweets.
-    val tweets = sc.textFile(tweetInput)
-    println("------------Sample JSON Tweets-------")
-    for (tweet <- tweets) {
-      var tw = jsonParser.parse(tweet).getAsJsonObject.getAsJsonArray("hashtagEntities")
-      if (tw.size() != 0)
-        println(tw)
+    try {
+      // Pretty print some of the tweets.
+      val tweets = sc.textFile(tweetInput)
+      println("------------Sample JSON Tweets-------")
+      for (tweet <- tweets) {
+        val tw = jsonParser.parse(tweet).getAsJsonObject.getAsJsonArray("hashtagEntities")
+        if (tw.size() != 0) {
+          for (i <- 0 until tw.size()) {
+            fw.write(tw.get(i).getAsJsonObject.get("text").getAsString + "\n")
+          }
+        }
+      }
+
     }
+    finally fw.close()
   }
 }
