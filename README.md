@@ -1,9 +1,9 @@
 # Project
 
 ## Team members:
-- Anh Tuan Nguyen ID: 18142335
-- Mohit Sriram Tirumala ID: 16292490
-- Sai Haneesh Tanneru ID: 16290739
+- Anh Tuan Nguyen | ID: 18142335 | Email: lndhf@mail.umkc.edu
+- Mohit Sriram Tirumala | ID: 16292490 | Email: mtkdd@mail.umkc.edu
+- Sai Haneesh Tanneru | ID: 16290739 | Email: htz6p@mail.umkc.edu
 
 ## Phase 1
 
