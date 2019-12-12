@@ -57,10 +57,17 @@ Execute 14 queries on the collected tweets dataset.
 13.	Query to get the protected status of users.
 14.	Query to get the top users by Tweets.
 
-### Setup
+### Install
 
 1. Install and run Apache Zeppelin: https://zeppelin.apache.org/docs/0.8.2/quickstart/install.html
 2. Download Tweets.json from Zeppelin Note folder.
 3. Import Tweets.json to Zeppelin Notebook.
 4. Change the input path and run the note.
+
+### Running a docker image
+
+1. Install Docker: You need to [install docker](https://docs.docker.com/get-started/) on your machine.
+2. Run conmmand: docker run -p 8080:8080 --rm anhnguyent93/my-zeppelin
+3. Open http://localhost:8080/
+4. Select a notebook: "Tweets" (Note: select "Save" when asked to binding interpreter for this note)
 
